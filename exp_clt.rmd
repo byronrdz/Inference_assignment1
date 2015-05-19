@@ -29,14 +29,16 @@ The red dashed line shows the tehoretical mean, while the blue doashed line show
 t_mean - r_avg
 ```
 
-The standard deviation of the data is:
+The variance of the data is:
 ```{r,dev.args=list(pointsize=7)}
-sd(data)
+var(data)
 ```
-The difference between the theoretical standard deviation and the standard deviation of the data of the simulation is:
+The difference between the theoretical standard deviation and the standard deviation of the sampled data is:
 ```{r}
-1/lambda - sd(data)
+(1/lambda)^2 - var(data)
 ```
+It is evident that the value of the real variance is close to the theoretical variance. 
+
 In order to analyse the Central Limit Theorem, we are going to take the averages of 1000 simulations of exponentials with 40 observations each one. 
 ```{r,fig.height=2.5,fig.width=4,dev.args=list(pointsize=5)}
 mean_s<-c();for(i in 1:1000){mean_s <-c (mean_s , mean(rexp(40,lambda)));}
